@@ -1,0 +1,22 @@
+body {
+    font-family: Arial;
+    padding: 20px;
+}
+
+.faqBox {
+    padding: 12px;
+    margin-bottom: 15px;
+}
+
+.question {
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.answer {
+    margin-top: 10px;
+    display: none;
+    color: red;
+}
