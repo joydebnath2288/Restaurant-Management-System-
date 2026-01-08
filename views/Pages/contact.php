@@ -1,4 +1,4 @@
-<!-- views/pages/contact.php -->
+
 <?php include 'views/layout/header.php'; ?>
 <div class="container">
     <h2>Contact Support</h2>

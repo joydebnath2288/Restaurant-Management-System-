@@ -2,7 +2,7 @@
 <?php include 'views/layout/header.php'; ?>
 <div class="container">
     <h2>Contact Support</h2>
-    <!-- Success/Error Feedback -->
+    
     <?php if(isset($_GET['status'])): ?>
         <?php if($_GET['status'] == 'success'): ?>
             <div style="background:#d4edda; color:#155724; padding:10px; margin-bottom:10px;">Message sent successfully!</div>

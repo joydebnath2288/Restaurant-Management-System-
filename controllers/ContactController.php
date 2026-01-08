@@ -11,7 +11,7 @@ class ContactController {
     }
 
     public function index() {
-        // Enforce Role Separation
+    
         if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
             // Admin View: List Messages
             $stmt = $this->message->getAll();
