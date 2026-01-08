@@ -1,5 +1,4 @@
 <?php
-// controllers/AdminController.php
 
 class AdminController extends Controller {
     
