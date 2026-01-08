@@ -1,5 +1,5 @@
 <?php
-// controllers/ReservationController.php
+
 require_once 'models/Reservation.php';
 
 class ReservationController {
@@ -11,7 +11,7 @@ class ReservationController {
     }
 
     public function index() {
-        // Dual view based on role
+        
         if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
             $stmt = $this->reservation->getAllReservations();
             $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
