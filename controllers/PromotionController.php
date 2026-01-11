@@ -1,5 +1,4 @@
 <?php
-// controllers/PromotionController.php
 require_once 'models/Promotion.php';
 
 class PromotionController {
@@ -17,7 +16,6 @@ class PromotionController {
         }
         $stmt = $this->promotion->getAll();
         $promotions = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        // Layout inclusions
         include 'views/layout/header.php';
         echo '<div class="container">';
         include 'views/layout/sidebar.php';
@@ -53,8 +51,7 @@ class PromotionController {
             $promo = $this->promotion->getByCode($code);
 
             if($promo) {
-                // Determine logic for discount
-                // Store in session to apply at checkout?
+              
                 $_SESSION['discount'] = $promo['discount_percent'];
                 $_SESSION['promo_code'] = $promo['code'];
                 header("Location: " . BASE_URL . "index.php?controller=order&action=viewCart&success=promo_applied");
