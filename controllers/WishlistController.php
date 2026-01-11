@@ -1,5 +1,4 @@
 <?php
-// controllers/WishlistController.php
 require_once 'models/Wishlist.php';
 
 class WishlistController {
