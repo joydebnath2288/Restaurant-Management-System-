@@ -1,5 +1,4 @@
 <?php
-// controllers/ReportController.php
 require_once 'models/Report.php';
 
 class ReportController {
@@ -19,7 +18,6 @@ class ReportController {
         $sales = $this->report->getDailySales()->fetchAll(PDO::FETCH_ASSOC);
         $popular = $this->report->getMostPopularItems()->fetchAll(PDO::FETCH_ASSOC);
         
-        // Layout inclusions
         include 'views/layout/header.php';
         echo '<div class="container">';
         include 'views/layout/sidebar.php';
