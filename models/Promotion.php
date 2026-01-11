@@ -1,5 +1,4 @@
 <?php
-// models/Promotion.php
 
 class Promotion extends Model {
     private $table_name = "promotions";
@@ -15,14 +14,14 @@ class Promotion extends Model {
     }
 
     public function getByCode($code) {
-        $query = "SELECT * FROM " . $this->table_name . " WHERE code = ? AND is_active = 1 AND valid_until >= CURDATE() LIMIT 0,1";
+        $query = "SELECT * FROM " . $this->table_name . " 
+                  WHERE code = ? AND is_active = 1 AND valid_until >= CURDATE() 
+                  LIMIT 0,1";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $code);
-        $stmt->execute();
+        $stmt->execute([$code]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Required for Admin Manage
     public function getAll() {
         $query = "SELECT * FROM " . $this->table_name . " ORDER BY valid_until DESC";
         $stmt = $this->conn->prepare($query);
@@ -31,19 +30,17 @@ class Promotion extends Model {
     }
 
     public function create($code, $discount, $valid_until) {
-        $query = "INSERT INTO " . $this->table_name . " SET code=:code, discount_percent=:discount, valid_until=:valid_until, is_active=1";
+        $query = "INSERT INTO " . $this->table_name . " 
+                  (code, discount_percent, valid_until, is_active) 
+                  VALUES (?,?,?,1)";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":code", $code);
-        $stmt->bindParam(":discount", $discount);
-        $stmt->bindParam(":valid_until", $valid_until);
-        return $stmt->execute();
+        return $stmt->execute([$code, $discount, $valid_until]);
     }
 
     public function delete($id) {
-        $query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":id", $id);
-        return $stmt->execute();
+        return $stmt->execute([$id]);
     }
 }
 ?>
