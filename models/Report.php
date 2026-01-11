@@ -1,5 +1,4 @@
 <?php
-// models/Report.php
 
 class Report extends Model {
 
