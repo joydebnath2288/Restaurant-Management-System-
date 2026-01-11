@@ -1,5 +1,4 @@
 <?php
-// controllers/ReservationController.php
 require_once 'models/Reservation.php';
 
 class ReservationController {
@@ -11,11 +10,10 @@ class ReservationController {
     }
 
     public function index() {
-        // Dual view based on role
         if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
             $stmt = $this->reservation->getAllReservations();
             $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            // Layout inclusions
+            
             include 'views/layout/header.php';
             echo '<div class="container">';
             include 'views/layout/sidebar.php';
@@ -26,13 +24,13 @@ class ReservationController {
             echo '</div></div>';
             include 'views/layout/footer.php';
         } else {
-            // Show form to customer
+          
             include 'views/customer/reservation.php';
         }
     }
 
     public function items() {
-         // for admin list
+    
          $stmt = $this->reservation->getAll();
          $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
          include 'views/admin/reservations.php';
